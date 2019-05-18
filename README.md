@@ -2,7 +2,7 @@
 
 The goal of this project is to train and deploy an image segmentation model, the model is an encoder-decoder that was trained on a dataset of 80 images of the ISEM 2019 class, the images were first segmented manually using [VGG Image Annotator](http://www.robots.ox.ac.uk/~vgg/software/via/) tool that produces a csv [file](https://github.com/mezanass/seg_app/blob/master/training/via_region_data.csv) that contains the coordinates of the various segmentation polygons, using this file a mask was created for every image, since the dataset is kinda small, during the training a data pipeline was setup to apply various transformations to the training images and masks in order to help the model generalize better. a dockerized web app was created to explore various deployment options (tensorflowjs, flask web service, ...).
 
-![Screenshot](screenshot.png)
+![Screenshot](https://github.com/mezanass/seg_app/blob/master/screenshot.jpg)
 
 ## Getting Started
 
