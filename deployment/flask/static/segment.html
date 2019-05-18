@@ -16,17 +16,16 @@
 		            </div>
 		        </div>
 		        <hr>
-		        <div class="row">
+				<div class="row">
+					<div class="col">
+		                <h2 class="ml-3">Image</h2>
+		                <img id="selected-image" class="ml-3" src="" />
+		            </div>
+		            <hr>
 		            <div class="col">
 		                <h2 class="ml-3">Mask</h2>
 		                <p id="prediction-list"></p>
-		                <img id="predicted-mask" class="ml-3" src="" />
 		                <canvas id="predicted-mask-" width="256" height="256">
-		            </div>
-		        	<hr>
-		            <div class="col">
-		                <h2 class="ml-3">Image</h2>
-		                <img id="selected-image" class="ml-3" src="" />
 		            </div>
 		        </div>
 		    </div>
@@ -49,7 +48,28 @@
 			$("#predict-button").click(function(event){
 				let message ={img: base64Image}
 				$.post("http://localhost:5000/segment", JSON.stringify(message), function(responce){
-					$('#prediction-list').text(responce.mask);
+					//$('#prediction-list').text(responce.mask);
+					console.log(responce.mask);
+					var ctx =document.querySelector("canvas").getContext("2d");
+
+					var h = 256;
+					var w = 256;
+
+					var imgData = ctx.getImageData(0, 0, w, h);
+					var data = imgData.data;  // the array of RGBA values
+
+					for(var i = 0; i < h; i++) {
+					    for(var j = 0; j < w; j++) {
+					        var s = 4 * i * w + 4 * j;  // calculate the index in the array
+					        var x = responce.mask[i][j];  // the RGB values
+					        data[s] = x[0];
+					        data[s + 1] = x[1];
+					        data[s + 2] = x[2];
+					        data[s + 3] = 255;  // fully opaque
+					    }
+					}
+
+					ctx.putImageData(imgData, 0, 0);
 				});
 			});
 		</script>
