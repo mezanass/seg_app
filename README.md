@@ -31,7 +31,9 @@ cd seg_app/deployment/flask/
 run without Docker
 
 ```
-./setup
+# uncomment lines 18 and 29 from seg_app/deployment/flask/seg_app.py and comment lines 19 and 30
+# install nomgodb or comment line 45 from seg_app.py
+./setup.sh
 ```
 
 run with Docker
