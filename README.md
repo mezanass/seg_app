@@ -53,6 +53,7 @@ run with Docker
 ## Authors
 
 * **Anass Mezroui** - [LinkedIn](https://www.linkedin.com/in/anassmezroui/)
+* **Mustapha Bouamama** - [LinkedIn](https://www.linkedin.com/in/bouamama-mustapha/)
 
 ## License
 
